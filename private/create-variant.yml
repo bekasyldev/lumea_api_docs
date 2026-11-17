@@ -1,0 +1,27 @@
+info:
+  name: create variant
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{baseUrl}}/products/{{productId}}/variants"
+  body:
+    type: json
+    data: |-
+      {
+        "productId": {{productId}},
+        "name": "Default",
+        "price": 1000,
+        "wholesalePrice": 800,
+        "wholesaleMinQty": 10,
+        "isActive": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

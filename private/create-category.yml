@@ -1,0 +1,33 @@
+info:
+  name: create category
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{baseUrl}}/categories"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Test Category",
+        "slug": "test-category"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        // remember the new category so the other requests use it
+        if (res.status === 201) {
+          bru.setEnvVar("categoryId", String(res.body.ID));
+          bru.setEnvVar("categorySlug", res.body.Slug);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

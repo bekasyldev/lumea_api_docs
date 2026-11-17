@@ -1,0 +1,26 @@
+info:
+  name: create product
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/products"
+  body:
+    type: json
+    data: |-
+      {
+        "categoryId": {{categoryId}},
+        "name": "Test Product",
+        "slug": "test-product",
+        "description": "A product created from Bruno",
+        "isActive": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

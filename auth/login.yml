@@ -1,0 +1,39 @@
+info:
+  name: login
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/login"
+  body:
+    type: json
+    data: |-
+      {
+        "username": "{{user}}",
+        "password": "{{userpassword}}"
+      }
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        // save the access token so protected requests can use {{accessToken}}
+        if (res.status === 200 && res.body.access_token) {
+          bru.setEnvVar("accessToken", res.body.access_token);
+        }
+    - type: tests
+      code: |-
+        test("returns 200 OK", function() {
+          expect(res.status).to.equal(200);
+        });
+        test("returns an access token", function() {
+          expect(res.body.access_token).to.be.a("string");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
