@@ -7,7 +7,7 @@ variables:
   - name: password
     value: snake
   - name: accessToken
-    value: ""
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtb2xmb3kiLCJleHAiOjE3OTUyMTMyODgsImlhdCI6MTc5NTIxMjM4OCwicm9sZSI6ImFkbWluIn0.d4rbPG_UHjQumDN9VYo-_qMWcKhg7QG9Ww_hHvyvcZI
   - name: productId
     value: "1"
   - name: variantId
@@ -17,4 +17,8 @@ variables:
   - name: categorySlug
     value: test-category
   - name: refreshToken
-    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtb2xmb3kiLCJleHAiOjE3OTU4MTQ4MjcsImlhdCI6MTc5NTIxMDAyNywianRpIjoiODYzYzFkYTEtN2Q2Ni00OTVmLTg1MWUtNDQyZjkzNWU5OTQ0In0.QOctfnYfqLuQO__qUTSQiZNunxodlKZ_qP3Br-SKmuk
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtb2xmb3kiLCJleHAiOjE3OTU4MTYyMTQsImlhdCI6MTc5NTIxMTQxNCwianRpIjoiNTE2MjQ5ODQtYmQxYS00YzcwLTk0OWYtOGU4ZjlkMzhkMjA5In0.c192cZsMH93SAvXuPCpf1LK6klbnaRTFy_xd_GNr5Vg
+  - name: orderId
+    value: "8"
+  - name: orderItemId
+    value: "18"

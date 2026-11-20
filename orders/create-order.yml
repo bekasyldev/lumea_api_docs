@@ -1,0 +1,39 @@
+info:
+  name: create order
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/orders"
+  body:
+    type: json
+    data: |-
+      {
+        "CustomerName": "John Doe",
+        "CustomerPhone": "+77001234567",
+        "Comment": "leave at the door",
+        "Items": [
+          { "ProductVariantID": {{variantId}}, "Quantity": 1 }
+        ]
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        // remember the new order and its first item so the other requests use them
+        if (res.status === 201) {
+          bru.setEnvVar("orderId", String(res.body.ID));
+          if (res.body.Items && res.body.Items.length > 0) {
+            bru.setEnvVar("orderItemId", String(res.body.Items[0].ID));
+          }
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

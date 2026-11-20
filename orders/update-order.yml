@@ -1,0 +1,24 @@
+info:
+  name: update order
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/orders/{{orderId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "CustomerName": "John Doe",
+        "CustomerPhone": "+77007654321",
+        "Comment": "call before delivery"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
