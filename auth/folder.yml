@@ -2,3 +2,8 @@ info:
   name: auth
   type: folder
   seq: 2
+
+request:
+  headers:
+    - name: Cookie
+      value: refresh_token={{refreshToken}}

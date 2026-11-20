@@ -3,9 +3,9 @@ variables:
   - name: baseUrl
     value: http://localhost:8080
   - name: username
-    value: testuser
+    value: molfoy
   - name: password
-    value: password123
+    value: snake
   - name: accessToken
     value: ""
   - name: productId
@@ -16,3 +16,5 @@ variables:
     value: "1"
   - name: categorySlug
     value: test-category
+  - name: refreshToken
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtb2xmb3kiLCJleHAiOjE3OTU4MTQ4MjcsImlhdCI6MTc5NTIxMDAyNywianRpIjoiODYzYzFkYTEtN2Q2Ni00OTVmLTg1MWUtNDQyZjkzNWU5OTQ0In0.QOctfnYfqLuQO__qUTSQiZNunxodlKZ_qP3Br-SKmuk

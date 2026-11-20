@@ -10,8 +10,8 @@ http:
     type: json
     data: |-
       {
-        "username": "{{user}}",
-        "password": "{{userpassword}}"
+        "username": "{{username}}",
+        "password": "{{password}}"
       }
 
 runtime:
@@ -21,6 +21,16 @@ runtime:
         // save the access token so protected requests can use {{accessToken}}
         if (res.status === 200 && res.body.access_token) {
           bru.setEnvVar("accessToken", res.body.access_token);
+        }
+
+        // save the refresh_token cookie so we can test refresh token
+        const setCookie = res.headers["set-cookie"];
+        const cookies = Array.isArray(setCookie) ? setCookie : setCookie ? [setCookie] : [];
+        const refresh = cookies
+          .map((c) => c.split(";")[0])
+          .find((c) => c.startsWith("refresh_token="));
+        if (refresh) {
+          bru.setEnvVar("refreshToken", refresh.slice("refresh_token=".length));
         }
     - type: tests
       code: |-
